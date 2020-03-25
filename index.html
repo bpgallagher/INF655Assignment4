@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-end Web Dev II: Assignment 4: Build a jQuery Plugin</title>
+    <style type="text/css">
+        .error {
+            color: red;
+            border: 5px solid red;
+        }
+
+        .valid {
+            color: green;
+            border: 5px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Front-end Web Dev II</h1>
+    <h2>Assignment 4</h2>
+    <h3>Build a jQuery Plugin</h3>
+    <p contenteditable="true">
+        <textarea name="" id="" cols="30" rows="10">#buildajQueryplugin</textarea>
+    </p>
+
+    <input type="text" value="ramsey@muvva.com">
+
+    <p contenteditable="true" id="list">
+        using jQuery to build our own plugin.         
+    </p>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="validEmail.js"></script>
+    <script>
+        if ($("textarea").validEmail()) {
+            $("textarea").addClass("valid").removeClass("error");
+        } else {
+            $("textarea").removeClass("valid").addClass("error");
+        }
+
+        if ($("input").validEmail()) {
+            $("input").addClass("valid").removeClass("error");
+        } else {
+            $("input").removeClass("valid").addClass("error");
+        }
+    </script>
+    <script type="text/javascript">
+
+        $("input,textarea").validEmail({
+            on: "keyup",
+            success: function () {
+                $(this).addClass("valid").removeClass("error");
+            },
+            failure: function () {
+                $(this).removeClass("valid").addClass("error");
+            }
+        });
+
+    </script>
+</body>
+
+</html>
